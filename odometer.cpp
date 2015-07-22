@@ -2,11 +2,12 @@
 #include <string>
 #include <algorithm>
 
-#define MIN 1
-#define MAX 9
-#define BASE 10
-
 using namespace std;
+
+const int MIN = 1;
+const int MAX = 9;
+const int BASE = 10;
+
 
 class Odometer {
 	
@@ -30,19 +31,19 @@ Odometer::Odometer(int length) {
   this->length = length;
   
   min=0;
-  for(int i = 1; i <= length; i++) {
+  for ( int i = 1; i <= length; i++) {
     min = min*BASE + i;
   }
   max=0;
-  for(int i = 0; i <length; i++) {
+  for ( int i = 0; i <length; i++) {
     max = max*BASE + (BASE-length+i);
   }
 }
 
 bool Odometer::isValidNumber(int number) {
   int previous = INT_MAX;
-  for(int i = 0; i < length; i++) {
-    if(previous <= number % 10) {
+  for ( int i = 0; i < length; i++) {
+    if ( previous <= number % 10) {
       return false;
     }
     previous = number % 10;
@@ -67,7 +68,7 @@ int Odometer::nextNumber(int number) {
   return i;
 }
 
-int Odometer::difference(int number1,int number2){
+int Odometer::difference(int number1, int number2){
   int validCount = 0;
   int i = number1;
   while ( i != number2 ) {
